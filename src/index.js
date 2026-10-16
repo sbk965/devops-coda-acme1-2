@@ -111,6 +111,7 @@ const server = http.createServer((req, res) => {
 
     if (path === "/ready") {
       writeJson(res, 200, {
+        status: "ready",
         ready: true
       });
       return;

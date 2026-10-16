@@ -117,6 +117,14 @@ const server = http.createServer((req, res) => {
       return;
     }
 
+    if (path === "/version") {
+      writeJson(res, 200, {
+        version: "v3",
+        environment: process.env.APP_ENV || "development"
+      });
+      return;
+    }
+
     if (path === "/health") {
       writeJson(res, 200, {
         status: "healthy",

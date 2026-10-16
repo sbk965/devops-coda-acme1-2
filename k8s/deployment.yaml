@@ -17,7 +17,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
         - name: app
-          image: devops-app:v1
+          image: devops-app:v3
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -30,7 +30,7 @@ spec:
               memory: 128Mi
           readinessProbe:
             httpGet:
-              path: /health
+              path: /ready
               port: http
             periodSeconds: 5
           livenessProbe:

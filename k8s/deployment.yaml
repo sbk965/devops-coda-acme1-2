@@ -19,6 +19,15 @@ spec:
         - name: app
           image: devops-app:v3
           imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: devops-app-config
+          env:
+            - name: API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: devops-app-secret
+                  key: API_TOKEN
           ports:
             - name: http
               containerPort: 3000
